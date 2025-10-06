@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './swaggerConfig';
 import medicosRouter from './routes/medicos.routes';
+import consultasRouter from './routes/consultas.routes';
 
 const app = express();
 const port = 3000;
@@ -14,6 +15,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Rota principal de médicos
 app.use('/medicos', medicosRouter);
+
+// Rota principal de consultas
+app.use('/consultas', consultasRouter);
 
 // Rota de "health check" para verificar se a API está no ar
 app.get('/', (req: Request, res: Response) => {
