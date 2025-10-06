@@ -1,4 +1,4 @@
-# API de Agendamento de Consultas
+# API de Clínica Médica
 
 API RESTful que gerencia o agendamento de consultas médicas, permitindo o cadastro e controle de pacientes, médicos e de consultas associadas.
 
