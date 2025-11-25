@@ -6,7 +6,7 @@ export const createPacienteSchema = z.object({
     nome: z.string().min(3, { message: 'O nome deve ter no mínimo 3 caracteres.' }),
     email: z.string().email({ message: 'Formato de email inválido.' }),
     cpf: z.string().length(11, { message: 'O CPF deve ter 11 caracteres.' }),
-    dataNascimento: z.string().refine((date) => !isNaN(Date.parse(date)), { message: 'Data de nascimento inválida.' }),
+    dataNascimento: z.string().refine((date) => !isNaN(Date.parse(date)), { message: 'Data de nascimento inválida.' }).optional(),
 });
 
 export type CreatePacienteDTO = z.infer<typeof createPacienteSchema>;

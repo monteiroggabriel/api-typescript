@@ -47,10 +47,7 @@ export const getConsulta = async (req: Request, res: Response) => {
 export const newConsulta = async (req: Request, res: Response) => {
   try {
     const consultaData = createConsultaSchema.parse(req.body);
-    const novaConsulta = await createConsulta({
-      ...consultaData,
-      data: new Date(consultaData.data), // Converte a string da data para um objeto Date
-    });
+    const novaConsulta = await createConsulta(consultaData);
     res.status(201).json(novaConsulta);
   } catch (error) {
     if (error instanceof z.ZodError) {
