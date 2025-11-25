@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
 import {
-  Container,
+  Box,
   Typography,
   Grid,
   Card,
@@ -28,37 +28,37 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <Container>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ my: 4 }}>
+    <Box>
+      <Typography variant="h4" component="h1" gutterBottom sx={{ my: 4, textAlign: 'center' }}>
         Dashboard
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+      <Grid container spacing={3} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+        <Grid item xs={6}>
           <Card>
             <CardContent>
-              <Typography variant="h5" component="div">
+              <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
                 Médicos Cadastrados
               </Typography>
-              <Typography variant="h2" color="text.secondary">
+              <Typography variant="h2" color="text.secondary" sx={{ textAlign: 'center' }}>
                 {medicosCount}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6}>
           <Card>
             <CardContent>
-              <Typography variant="h5" component="div">
+              <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
                 Pacientes Cadastrados
               </Typography>
-              <Typography variant="h2" color="text.secondary">
+              <Typography variant="h2" color="text.secondary" sx={{ textAlign: 'center' }}>
                 {pacientesCount}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 

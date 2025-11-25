@@ -12,7 +12,7 @@ function App() {
     <Router>
       <CssBaseline />
       <Navbar />
-      <Container sx={{ mt: 4 }}>
+      <Container maxWidth="xl" sx={{ mt: 2 }}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/medicos" element={<Medicos />} />

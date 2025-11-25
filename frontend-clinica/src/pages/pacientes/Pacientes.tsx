@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Paciente } from "../../types/Paciente.ts";
+import type { Paciente } from "../../types/Paciente.ts";
 import { api } from "../../services/api";
 import { Container, Typography, Button, Box } from "@mui/material";
 import TabelaPacientes from "../../components/pacientes/TabelaPacientes.tsx";

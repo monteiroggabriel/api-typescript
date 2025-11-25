@@ -1,4 +1,4 @@
-import { Paciente } from "../../types/Paciente";
+import type { Paciente } from "../../types/Paciente.ts";
 import {
   Table,
   TableBody,

@@ -5,21 +5,18 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'space-between', alignItems: 'center' }}>
           <Button color="inherit" component={Link} to="/">
             Clínica
           </Button>
-        </Typography>
-        <Box>
-          <Button color="inherit" component={Link} to="/">
-            Dashboard
-          </Button>
-          <Button color="inherit" component={Link} to="/medicos">
-            Médicos
-          </Button>
-          <Button color="inherit" component={Link} to="/pacientes">
-            Pacientes
-          </Button>
+          <Box>
+            <Button color="inherit" component={Link} to="/medicos">
+              Médicos
+            </Button>
+            <Button color="inherit" component={Link} to="/pacientes">
+              Pacientes
+            </Button>
+          </Box>
         </Box>
       </Toolbar>
     </AppBar>

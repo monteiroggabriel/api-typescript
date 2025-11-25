@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import {
+import type {
   PacienteFormData,
-  pacienteSchema,
-} from "../../schemas/pacienteSchema";
+} from "../../schemas/pacienteSchema.ts";
+import { pacienteSchema } from "../../schemas/pacienteSchema.ts";
 import { api } from "../../services/api";
 import {
   Container,
