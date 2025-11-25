@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Request, Response } from 'express';
 import {
   getConsultas,
@@ -7,7 +8,7 @@ import {
   deleteConsulta,
 } from '../services/consultas.service';
 
-export const getAllConsultas = async (req: Request, res: Response) => {
+export const getAllConsultas = async (_req: Request, res: Response) => {
   try {
     const consultas = await getConsultas();
     res.status(200).json(consultas);
