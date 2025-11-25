@@ -1,0 +1,65 @@
+import { useEffect, useState } from "react";
+import { api } from "../services/api";
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+} from "@mui/material";
+
+const Dashboard = () => {
+  const [medicosCount, setMedicosCount] = useState(0);
+  const [pacientesCount, setPacientesCount] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const medicosResponse = await api.get("/medicos");
+        setMedicosCount(medicosResponse.data.length);
+        const pacientesResponse = await api.get("/pacientes");
+        setPacientesCount(pacientesResponse.data.length);
+      } catch (error) {
+        console.error("Erro ao buscar dados para o dashboard:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <Container>
+      <Typography variant="h4" component="h1" gutterBottom sx={{ my: 4 }}>
+        Dashboard
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                Médicos Cadastrados
+              </Typography>
+              <Typography variant="h2" color="text.secondary">
+                {medicosCount}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                Pacientes Cadastrados
+              </Typography>
+              <Typography variant="h2" color="text.secondary">
+                {pacientesCount}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Container>
+  );
+};
+
+export default Dashboard;
