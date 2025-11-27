@@ -4,9 +4,13 @@ import swaggerSpec from './swaggerConfig';
 import medicosRouter from './routes/medicos.routes';
 import consultasRouter from './routes/consultas.routes';
 import pacientesRouter from './routes/pacientes.routes';
+import cors from 'cors';
 
 const app = express();
 const port = 3000;
+
+// Middleware para habilitar o CORS
+app.use(cors());
 
 // Middleware para interpretar o corpo da requisição como JSON
 app.use(express.json());
