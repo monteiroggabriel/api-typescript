@@ -1,9 +1,10 @@
-# API de Clínica Médica
+# Projeto de Clínica Médica (Full-Stack)
 
-API RESTful que gerencia o agendamento de consultas médicas, permitindo o cadastro e controle de pacientes, médicos e de consultas associadas.
+Aplicação web completa para gerenciamento de uma clínica médica, com uma API RESTful no backend e uma interface de usuário reativa no frontend. O sistema permite o cadastro e controle de pacientes, médicos e o agendamento de consultas.
 
-## Tecnologias
+## Tecnologias Utilizadas
 
+### Backend
 - **Node.js**: Ambiente de execução JavaScript.
 - **Express**: Framework para construção da API.
 - **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
@@ -12,11 +13,18 @@ API RESTful que gerencia o agendamento de consultas médicas, permitindo o cadas
 - **Zod**: Biblioteca para validação de schemas.
 - **Swagger**: Para documentação e teste de endpoints.
 
----
+### Frontend
+- **React**: Biblioteca para construção de interfaces de usuário.
+- **Vite**: Ferramenta de build e desenvolvimento rápido.
+- **TypeScript**: Adiciona tipagem estática ao frontend.
+- **Material-UI (MUI)**: Biblioteca de componentes de UI.
+- **React Router**: Para gerenciamento de rotas.
+- **Axios**: Cliente HTTP para comunicação com a API.
+- **React Hook Form & Zod**: Para validação de formulários.
 
-## Como Começar
+## Como Iniciar
 
-Basta seguir as instruções abaixo para configurar e executar o projeto no seu ambiente local.
+Siga as instruções abaixo para configurar e executar o projeto completo (backend e frontend) no seu ambiente local.
 
 ### Pré-requisitos
 
@@ -24,7 +32,7 @@ Basta seguir as instruções abaixo para configurar e executar o projeto no seu 
 - [NPM](https://www.npmjs.com/)
 - Uma instância de banco de dados **PostgreSQL** em execução.
 
-### Instalação
+### 1. Configurando o Backend (API)
 
 1.  **Clone o repositório:**
     ```bash
@@ -32,7 +40,7 @@ Basta seguir as instruções abaixo para configurar e executar o projeto no seu 
     cd api-typescript
     ```
 
-2.  **Instale as dependências:**
+2.  **Instale as dependências do backend:**
     ```bash
     npm install
     ```
@@ -46,27 +54,36 @@ Basta seguir as instruções abaixo para configurar e executar o projeto no seu 
     ```
 
 4.  **Execute as migrações do banco de dados:**
-    O comando abaixo irá sincronizar o schema do Prisma com seu banco de dados, criando as tabelas necessárias.
+    O comando abaixo irá sincronizar o schema do Prisma com seu banco de dados.
     ```bash
     npx prisma migrate dev
     ```
 
-### Executando a Aplicação
+5.  **Inicie a API:**
+    -   **Modo de Desenvolvimento (com auto-reload):**
+        ```bash
+        npm run dev
+        ```
+    - A API estará disponível em `http://localhost:3000`.
 
--   **Modo de Desenvolvimento (com auto-reload):**
+### 2. Configurando o Frontend
+
+1.  **Acesse a pasta do frontend:**
+    Em um **novo terminal**, navegue até o diretório do frontend.
+    ```bash
+    cd frontend-clinica
+    ```
+
+2.  **Instale as dependências do frontend:**
+    ```bash
+    npm install
+    ```
+
+3.  **Inicie a aplicação React:**
     ```bash
     npm run dev
     ```
-
--   **Modo de Produção:**
-    ```bash
-    npm run build
-    npm run start
-    ```
-
-A API estará disponível por padrão em `http://localhost:3000` (ou na porta configurada).
-
----
+    - A aplicação frontend estará disponível em `http://localhost:5173` (ou outra porta indicada pelo Vite).
 
 ## Estrutura do Banco de Dados
 
@@ -99,8 +116,6 @@ O schema do banco de dados é gerenciado pelo Prisma e consiste em três modelos
 | `data` | `DateTime`| - | Data e hora da consulta. |
 | `pacienteId` | `String` | Chave Estrangeira | ID do paciente associado. |
 | `medicoId` | `String` | Chave Estrangeira | ID do médico associado. |
-
----
 
 ## Endpoints da API
 
@@ -140,16 +155,21 @@ Abaixo está um resumo dos endpoints disponíveis.
 | `PUT` | `/:id` | Atualiza os dados de uma consulta. |
 | `DELETE`| `/:id` | Cancela (remove) uma consulta. |
 
----
-
 ## Estrutura de Pastas
 
 ```
 .
+├── frontend-clinica/      # Aplicação Frontend (React + Vite)
+│   ├── public/
+│   └── src/
+│       ├── components/    # Componentes reutilizáveis
+│       ├── pages/         # Páginas da aplicação
+│       ├── services/      # Lógica de chamada à API
+│       └── ...
 ├── prisma/
 │   ├── schema.prisma      # Define os modelos do banco de dados
 │   └── migrations/        # Histórico de migrações do banco
-├── src/
+├── src/                   # Código fonte do Backend (API)
 │   ├── controllers/       # Controladores (lógica de requisição/resposta)
 │   ├── lib/               # Configuração de bibliotecas (ex: Prisma Client)
 │   ├── routes/            # Definição das rotas da API
