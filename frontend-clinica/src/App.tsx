@@ -5,6 +5,8 @@ import Medicos from "./pages/medicos/Medicos.tsx";
 import MedicoForm from "./pages/medicos/MedicoForm.tsx";
 import Pacientes from "./pages/pacientes/Pacientes.tsx";
 import PacienteForm from "./pages/pacientes/PacienteForm.tsx";
+import Consultas from "./pages/consultas/Consultas.tsx";
+import ConsultaForm from "./pages/consultas/ConsultaForm.tsx";
 import { CssBaseline, Container } from "@mui/material";
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
           <Route path="/pacientes" element={<Pacientes />} />
           <Route path="/pacientes/novo" element={<PacienteForm />} />
           <Route path="/pacientes/editar/:id" element={<PacienteForm />} />
+          <Route path="/consultas" element={<Consultas />} />
+          <Route path="/consultas/novo" element={<ConsultaForm />} />
+          <Route path="/consultas/editar/:id" element={<ConsultaForm />} />
         </Routes>
       </Container>
     </Router>

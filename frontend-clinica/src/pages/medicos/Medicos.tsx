@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import type { Medico } from "../../types/Medico.ts";
+import type { Medico } from "../../types/Medico";
 import { api } from "../../services/api";
-import { Container, Typography, Button, Box } from "@mui/material";
+import { Container, Typography, Button, Box, TextField } from "@mui/material";
 import TabelaMedicos from "../../components/medicos/TabelaMedicos.tsx";
 
 const Medicos = () => {
   const [medicos, setMedicos] = useState<Medico[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchMedicos = async () => {
@@ -32,22 +33,39 @@ const Medicos = () => {
     }
   };
 
+  const filteredMedicos = useMemo(() => {
+    return medicos.filter(
+      (medico) =>
+        medico.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        medico.especialidade.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [medicos, searchTerm]);
+
   return (
     <Container>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Cadastro de Médicos
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          component={Link}
-          to="/medicos/novo"
-        >
-          Novo Médico
-        </Button>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/medicos/novo"
+          >
+            Novo Médico
+          </Button>
+          <TextField
+            label="Buscar por nome ou especialidade"
+            variant="outlined"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            sx={{ width: "40%" }}
+          />
+        </Box>
       </Box>
-      <TabelaMedicos medicos={medicos} onDelete={handleDelete} />
+      <TabelaMedicos medicos={filteredMedicos} onDelete={handleDelete} />
     </Container>
   );
 };
