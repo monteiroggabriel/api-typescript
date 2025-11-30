@@ -7,8 +7,7 @@ import pacientesRouter from './routes/pacientes.routes';
 import cors from 'cors';
 
 const app = express();
-const port = 3000;
-
+const port = process.env.PORT || 3000;
 // Middleware para habilitar o CORS
 app.use(cors());
 
